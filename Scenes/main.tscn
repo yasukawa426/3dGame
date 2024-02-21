@@ -1,6 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjcc5bnbiicyg"]
+[gd_scene load_steps=9 format=3 uid="uid://cjcc5bnbiicyg"]
 
 [ext_resource type="PackedScene" uid="uid://csov6h8ondyjb" path="res://Scenes/player.tscn" id="1_hqjcx"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y7wch"]
+sky_top_color = Color(0.109804, 0.462745, 0.756863, 1)
+sky_horizon_color = Color(0.577451, 0.657936, 0.722466, 1)
+ground_horizon_color = Color(0.577451, 0.657936, 0.722466, 1)
+
+[sub_resource type="Sky" id="Sky_8gmak"]
+sky_material = SubResource("ProceduralSkyMaterial_y7wch")
+
+[sub_resource type="Environment" id="Environment_5sqcw"]
+background_mode = 2
+sky = SubResource("Sky_8gmak")
+tonemap_mode = 2
+glow_enabled = true
+fog_light_energy = 13.8
+volumetric_fog_density = 0.7553
 
 [sub_resource type="BoxMesh" id="BoxMesh_hmxnc"]
 size = Vector3(100, 0.11, 100)
@@ -16,6 +32,13 @@ points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 
 
 [node name="Main" type="Node"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5sqcw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
@@ -24,10 +47,6 @@ mesh = SubResource("BoxMesh_hmxnc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_ubwdm")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.8558, 0)
-shadow_enabled = true
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.5915, 0)
