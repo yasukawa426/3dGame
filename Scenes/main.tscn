@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjcc5bnbiicyg"]
+[gd_scene load_steps=11 format=3 uid="uid://cjcc5bnbiicyg"]
 
-[ext_resource type="PackedScene" uid="uid://csov6h8ondyjb" path="res://Scenes/player.tscn" id="1_hqjcx"]
+[ext_resource type="PackedScene" uid="uid://csov6h8ondyjb" path="res://scenes/player.tscn" id="1_hqjcx"]
+[ext_resource type="Texture2D" uid="uid://dy8edilcfftu6" path="res://resources/textures/696.jpg" id="1_xb5ay"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y7wch"]
 sky_top_color = Color(0.109804, 0.462745, 0.756863, 1)
@@ -18,7 +19,12 @@ glow_enabled = true
 fog_light_energy = 13.8
 volumetric_fog_density = 0.7553
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibsoj"]
+albedo_texture = ExtResource("1_xb5ay")
+uv1_triplanar = true
+
 [sub_resource type="BoxMesh" id="BoxMesh_hmxnc"]
+material = SubResource("StandardMaterial3D_ibsoj")
 size = Vector3(100, 0.11, 100)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ubwdm"]
