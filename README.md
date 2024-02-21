@@ -1,0 +1,1 @@
+<a href="https://www.freepik.com/free-vector/earth-texture_997013.htm">Earth texture by 0melapics</a> on Freepik
