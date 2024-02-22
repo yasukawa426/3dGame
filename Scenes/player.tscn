@@ -19,4 +19,3 @@ shape = SubResource("ConvexPolygonShape3D_xfjql")
 [node name="CameraPivot" type="Marker3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.08021, 1.85336)

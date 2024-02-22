@@ -3,6 +3,9 @@ extends CharacterBody3D
 #Velocidade base do jogador
 const BASE_SPEED:float = 5.0
 
+#Sensibilidade do mouse
+const SENSITIVITY:float = 1
+
 #Velocidade atual do jogador, alterada em algumas situações.
 var current_speed:float = BASE_SPEED
 
@@ -12,6 +15,24 @@ const JUMP_VELOCITY:float = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+# Assim que pronto, pegamos a cabeça do jogador
+@onready var head = $CameraPivot
+
+# Assim que pronto, pegamos a camera
+@onready var camera = $CameraPivot/Camera3D
+
+#Executado assim que o jogador está pronto
+func _ready():
+	#Capturamos o mouse para futuramente usalo como movimento da camera
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+#Pegamos os input não usados
+func _unhandled_input(event:InputEvent):
+	#Caso o evento for do tipo movimento do mouse
+	if event is InputEventMouseMotion:
+		#separamos a rotação para evitar rotar o mundo
+		head.rotate_y(-event.relative.x * SENSITIVITY/100)
+		camera.rotate_x(-event.relative.y * SENSITIVITY/100)
 
 func _physics_process(delta:float):
 	#Chama a função de movimento
@@ -43,6 +64,9 @@ func _handle_movement(delta:float):
 		velocity.z = direction.z * current_speed
 	#Caso não estiver com nenhum botão apertado, desacelera até 0.
 	else:
+		#Esse código deveria desacelerar o corpo como uma forma de fricção, mas como estamos usando a velocidade
+		#O corpo é desacelerado instantaneamente, não funcionando como esperado.
+		#Erro direto do código do godot
 		velocity.x = move_toward(velocity.x, 0, current_speed)
 		velocity.z = move_toward(velocity.z, 0, current_speed)
 	
