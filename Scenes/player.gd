@@ -33,6 +33,10 @@ func _unhandled_input(event:InputEvent):
 		#separamos a rotação para evitar rotar o mundo
 		head.rotate_y(-event.relative.x * SENSITIVITY/100)
 		camera.rotate_x(-event.relative.y * SENSITIVITY/100)
+		
+		#limitamos quanto o jogador consegue movimentar a camera no eixo x
+		#evitando girar completamente
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
 func _physics_process(delta:float):
 	#Chama a função de movimento
