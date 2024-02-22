@@ -19,22 +19,18 @@ glow_enabled = true
 fog_light_energy = 13.8
 volumetric_fog_density = 0.7553
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibsoj"]
-albedo_texture = ExtResource("1_xb5ay")
-uv1_triplanar = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_hmxnc"]
-material = SubResource("StandardMaterial3D_ibsoj")
-size = Vector3(100, 0.11, 100)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ubwdm"]
-margin = 0.4
-points = PackedVector3Array(-50, -0.5, -50, -50, 0.5, -50, 50, -0.5, -50, -50, -0.5, 50, -50, 0.5, 50, 50, 0.5, -50, 50, -0.5, 50, 50, 0.5, 50)
-
 [sub_resource type="BoxMesh" id="BoxMesh_7r8pc"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dgugw"]
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2ysil"]
+size = Vector3(100, 0.5, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wm5yo"]
+albedo_texture = ExtResource("1_xb5ay")
+uv1_triplanar = true
+uv2_triplanar_sharpness = 0.267943
 
 [node name="Main" type="Node"]
 
