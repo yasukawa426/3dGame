@@ -15,6 +15,9 @@ const JUMP_VELOCITY:float = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+# Vetor com a direção do movimento baseado no input do jogador
+var _input_dir:Vector2
+
 # Assim que pronto, pegamos a cabeça do jogador
 @onready var head = $CameraPivot
 
@@ -26,6 +29,18 @@ func _ready():
 	#Capturamos o mouse para futuramente usalo como movimento da camera
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+
+func _physics_process(delta:float):
+	#Chama a função de movimento
+	_handle_movement(delta)
+
+
+#Essa função deve ser usada para consumir eventos de UI
+func _input(event):
+	pass
+
+
+#Essa função deve ser usada pra consumir eventos de gameplay
 #Pegamos os input não usados
 func _unhandled_input(event:InputEvent):
 	#Caso o evento for do tipo movimento do mouse
@@ -37,38 +52,41 @@ func _unhandled_input(event:InputEvent):
 		#limitamos quanto o jogador consegue movimentar a camera no eixo x
 		#evitando girar completamente
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
-
-func _physics_process(delta:float):
-	#Chama a função de movimento
-	_handle_movement(delta)
+		
+	#Caso for algum evento de ação
+	elif event is InputEvent:
+		
+		#Checa se o botão de correr está segurado e então altera a current_speed
+		if Input.is_action_pressed("sprint"):
+			current_speed = BASE_SPEED * 1.5
+		else:
+			current_speed = BASE_SPEED
+			
+		# Handle jump.
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
+			
+		# Pega a direção do movimento baseado nos inputs (esquerda, direita, frente e traz)
+		_input_dir = Input.get_vector("move_left", "move_right", "move_foward", "move_back")
+	
+	else:
+		pass
 
 #Função responsável pela movimentação do player
 func _handle_movement(delta:float):
 	
-	#Checa se o botão de correr está segurado e então altera a current_speed
-	if Input.is_action_pressed("sprint"):
-		current_speed = BASE_SPEED * 1.5
-	else:
-		current_speed = BASE_SPEED
-	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("move_left", "move_right", "move_foward", "move_back")
 	
 	#A direção é baseada pra onde a camera esta olhando
-	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction = (head.transform.basis * Vector3(_input_dir.x, 0, _input_dir.y)).normalized()
+	
 	if direction:
 		velocity.x = direction.x * current_speed
 		velocity.z = direction.z * current_speed
-	#Caso não estiver com nenhum botão apertado, desacelera até 0.
+		
+	#Caso não tiver nenhuma direção, desacelera até 0.
 	else:
 		#Esse código deveria desacelerar o corpo como uma forma de fricção, mas como estamos usando a velocidade
 		#O corpo é desacelerado instantaneamente, não funcionando como esperado.
@@ -78,3 +96,6 @@ func _handle_movement(delta:float):
 	
 	#Move com os vetores criados
 	move_and_slide()
+
+
+
