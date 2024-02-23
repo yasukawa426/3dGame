@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://cjcc5bnbiicyg"]
+[gd_scene load_steps=6 format=3 uid="uid://cjcc5bnbiicyg"]
 
-[ext_resource type="PackedScene" uid="uid://csov6h8ondyjb" path="res://scenes/player.tscn" id="1_hqjcx"]
-[ext_resource type="Texture2D" uid="uid://dy8edilcfftu6" path="res://resources/textures/696.jpg" id="1_xb5ay"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_2sx10"]
+[ext_resource type="PackedScene" uid="uid://vorto4l6hyqt" path="res://scenes/test_stage.tscn" id="1_kt5wh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y7wch"]
 sky_top_color = Color(0.109804, 0.462745, 0.756863, 1)
