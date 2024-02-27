@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfvmqxdo65cmg"]
+
+[ext_resource type="Texture2D" uid="uid://yu50tpxg6xkg" path="res://resources/textures/concrete_floor_02.jpg" id="1_7sx3x"]
+[ext_resource type="PackedScene" uid="uid://csov6h8ondyjb" path="res://scenes/entities/player/player.tscn" id="2_i1wul"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dpqpy"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73usi"]
+albedo_texture = ExtResource("1_7sx3x")
+uv1_offset = Vector3(0, 0, -0.56)
+uv1_triplanar = true
+uv2_triplanar_sharpness = 4.14106
+uv2_world_triplanar = true
+
+[node name="FirstStage" type="Node3D"]
+
+[node name="WorldGround" type="CSGMesh3D" parent="."]
+use_collision = true
+mesh = SubResource("BoxMesh_dpqpy")
+material = SubResource("StandardMaterial3D_73usi")
+
+[node name="Player" parent="." instance=ExtResource("2_i1wul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73705, 0)
