@@ -36,5 +36,12 @@ func _debug_inputs(event: InputEvent):
 		pass
 
 func _update_test_hud():
-	$TestHUD.update_stamina($SubViewportContainer/SubViewport/TestStage/Player.current_stamina)
-	$TestHUD.update_sprinting($SubViewportContainer/SubViewport/TestStage/Player.is_sprinting)
+	var stamina: float = $SubViewportContainer/SubViewport/TestStage/Player.current_stamina
+	var sprinting: bool = $SubViewportContainer/SubViewport/TestStage/Player.is_sprinting
+	
+	var test_string: String = ""
+	
+	test_string += "Stamina: " + str(stamina) + "\n"
+	test_string += "Sprinting: " + str(sprinting) + "\n"
+	
+	$TestHUD.update_test_info(test_string)

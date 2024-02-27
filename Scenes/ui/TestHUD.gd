@@ -11,8 +11,6 @@ func _process(delta):
 	pass
 
 #Atualiza a mensagem de stamina
-func update_stamina(stamina: float):
-	$StaminaLabel.text = "Stamina: " + str(stamina)
+func update_test_info(string: String):
+	$InfoLabel.text = string
 
-func update_sprinting(sprinting: bool):
-	$SprintingLabel.text = "Sprinting: " + str(sprinting)
