@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy8edilcfftu6"
-path.s3tc="res://.godot/imported/696.jpg-304981b7696960ac295de4060351ca80.s3tc.ctex"
+uid="uid://bdt4ftwhfnpqu"
+path.s3tc="res://.godot/imported/dirt_0.png-21a101d590011f170827e60d2e3457a2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resources/textures/696.jpg"
-dest_files=["res://.godot/imported/696.jpg-304981b7696960ac295de4060351ca80.s3tc.ctex"]
+source_file="res://resources/textures/dirt_0.png"
+dest_files=["res://.godot/imported/dirt_0.png-21a101d590011f170827e60d2e3457a2.s3tc.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://vorto4l6hyqt"]
 
 [ext_resource type="PackedScene" uid="uid://csov6h8ondyjb" path="res://scenes/player.tscn" id="1_n1w1m"]
-[ext_resource type="Texture2D" uid="uid://dy8edilcfftu6" path="res://resources/textures/696.jpg" id="2_y87tq"]
+[ext_resource type="Texture2D" uid="uid://bdt4ftwhfnpqu" path="res://resources/textures/dirt_0.png" id="2_uvy8t"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7r8pc"]
 
@@ -11,10 +11,9 @@ points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 
 [sub_resource type="BoxMesh" id="BoxMesh_2ysil"]
 size = Vector3(100, 0.5, 100)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wm5yo"]
-albedo_texture = ExtResource("2_y87tq")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6x44"]
+albedo_texture = ExtResource("2_uvy8t")
 uv1_triplanar = true
-uv2_triplanar_sharpness = 0.267943
 
 [sub_resource type="BoxMesh" id="BoxMesh_xneqa"]
 size = Vector3(1, 5, 100)
@@ -52,7 +51,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.611658, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 use_collision = true
 mesh = SubResource("BoxMesh_2ysil")
-material = SubResource("StandardMaterial3D_wm5yo")
+material = SubResource("StandardMaterial3D_o6x44")
 
 [node name="Walls" type="Node3D" parent="."]
 
