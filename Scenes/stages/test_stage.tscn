@@ -57,18 +57,22 @@ material = SubResource("StandardMaterial3D_o6x44")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.877, 1.84467, 0)
+use_collision = true
 mesh = SubResource("BoxMesh_xneqa")
 
 [node name="CSGMesh3D2" type="CSGMesh3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.877, 1.64216, 0)
+use_collision = true
 mesh = SubResource("BoxMesh_xneqa")
 
 [node name="CSGMesh3D3" type="CSGMesh3D" parent="Walls"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.57467, 1.70728, -50.1187)
+use_collision = true
 mesh = SubResource("BoxMesh_xneqa")
 
 [node name="CSGMesh3D4" type="CSGMesh3D" parent="Walls"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.57467, 1.70728, 49.8813)
+use_collision = true
 mesh = SubResource("BoxMesh_xneqa")
 
 [node name="Obejcts" type="Node3D" parent="."]
