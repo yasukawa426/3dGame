@@ -51,4 +51,5 @@ Manutenção Assustadora:
 			Tempo
 	
 	Observações: Vários mapas de tamanhos diferentes começando com uma casa pequena com atividades simples, só poder fazer uma coisa de cada vez? (Carregar objeto, abrir portas ou consertar. Dando como justificativa ter perdido um braço em um acidente)
-
+	Durante a primeira fase o jogador vai spawnar do lado de fora do prédio que deve entrar
+	Caso o usuário decidir só ir embora, acaba o jogo. Se não ele n pode mais sair do prédio
