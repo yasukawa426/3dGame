@@ -1,0 +1,16 @@
+[node name="TestHUD" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("4_r5dh7")
+
+[node name="StaminaLabel" type="Label" parent="TestHUD"]
+offset_right = 454.0
+offset_bottom = 114.0
+theme_override_font_sizes/font_size = 38
+text = "Stamina: "
+
+[node name="SprintingLabel" type="Label" parent="TestHUD"]
+offset_top = 49.0
+offset_right = 275.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 38
+text = "Sprinting: false"

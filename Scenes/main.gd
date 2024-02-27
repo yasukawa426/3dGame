@@ -6,11 +6,16 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	print_debug("Debug build: " + str(OS.is_debug_build()))
+	
+	if OS.is_debug_build():
+		$TestHUD.show()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	
+	if OS.is_debug_build():
+		_update_test_hud()
 	
 	
 #Essa função deve ser usada para consumir eventos de atalho
@@ -29,3 +34,7 @@ func _debug_inputs(event: InputEvent):
 	
 	else: 
 		pass
+
+func _update_test_hud():
+	$TestHUD.update_stamina($SubViewportContainer/SubViewport/TestStage/Player.current_stamina)
+	$TestHUD.update_sprinting($SubViewportContainer/SubViewport/TestStage/Player.is_sprinting)
