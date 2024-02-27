@@ -1,0 +1,54 @@
+Manutenção Assustadora:
+	Objetivo: O jogador precisa realizar tarefas de manutenção em um prédio antigo e mal-assombrado.
+
+	Mecânicas:
+		Exploração: O jogador explora o prédio, procurando por ferramentas e itens para realizar as tarefas.
+		Quebra-cabeças: O jogador precisa resolver quebra-cabeças para acessar áreas restritas e completar as tarefas.
+		Interação com objetos: O jogador precisa usar ferramentas e objetos para consertar máquinas, abrir portas e realizar outras tarefas.
+		Eventos paranormais: O jogador é confrontado por eventos paranormais enquanto realiza as tarefas.
+
+	Dificuldade:
+		As tarefas se tornam cada vez mais complexas e desafiadoras.
+		Os eventos paranormais se tornam mais frequentes e intensos.
+		
+	Diversão:
+		O jogador sente a satisfação de completar as tarefas.
+		O jogador sente o suspense dos eventos paranormais.
+		O jogador é desafiado a usar a lógica e a criatividade para superar os obstáculos.
+		
+	
+	Funcionalidades: Movimentação, invetário (guardar algumas ferramentas para manutenção ou carregalas na mao individualmente?), inimigos (fantasmas, monstros te perseguindo?), eventos aleatorios (objetos se movendo sozinhos, jumpscares?, barulhos aleatorios) ,recursos (bateria de lanterna, tempo?)
+
+	Ambientação: Prédio (1 ou mais andares) com um escritório normal escuro vazio, luzes não funcionando ou funcionando em pontos especificos
+
+	Tarefas: Trocar lampadas, trocar fusíveis (liberando as luzes?), desentupir canos/privadas, limpar chão.
+
+	Eventos: Sons estranhos, objetos que se movem sozinhos, aparições.
+		
+	Pera, eu esqueci de trazer as minhas próprias ferramentas? Pra esse trabalho de manutenção?? Quão incopentente eu sou???
+
+	Ordem de denvolvimento:
+		1 - Movimentação:
+			Andar
+			Olhar em volta
+			Corrida com stamina limitada (não precisa ser visível)
+		
+		2 - Interação:
+			Abrir portas
+			Pegar objetos
+			Usar ferramentas
+		
+		3 - Ambientação:
+			Mapa
+			Atmosfera
+			Sons
+			Segredos?
+		
+		4 - Gameplay:
+			Puzzles
+			Eventos aleátorios
+			Inimigos
+			Tempo
+	
+	Observações: Vários mapas de tamanhos diferentes começando com uma casa pequena com atividades simples, só poder fazer uma coisa de cada vez? (Carregar objeto, abrir portas ou consertar. Dando como justificativa ter perdido um braço em um acidente)
+
