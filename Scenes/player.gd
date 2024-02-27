@@ -4,7 +4,7 @@ extends CharacterBody3D
 #Velocidade base do jogador
 const BASE_SPEED:float = 5.0
 #Em quanto correr aumenta a velocidade
-const SPRINT_MULTIPLIER: float = 1.5
+const SPRINT_MULTIPLIER: float = 2
 #Velocidade de pulo
 const JUMP_VELOCITY:float = 4.5
 #Sensibilidade do mouse
