@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://vorto4l6hyqt"]
 
-[ext_resource type="PackedScene" uid="uid://csov6h8ondyjb" path="res://scenes/player.tscn" id="1_n1w1m"]
+[ext_resource type="PackedScene" uid="uid://csov6h8ondyjb" path="res://scenes/entities/player/player.tscn" id="1_w6an8"]
 [ext_resource type="Texture2D" uid="uid://bdt4ftwhfnpqu" path="res://resources/textures/dirt_0.png" id="2_uvy8t"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7r8pc"]
@@ -44,7 +44,7 @@ mesh = SubResource("BoxMesh_7r8pc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.83082e-05, -0.00351524, 0.00081265)
 shape = SubResource("ConvexPolygonShape3D_dgugw")
 
-[node name="Player" parent="." instance=ExtResource("1_n1w1m")]
+[node name="Player" parent="." instance=ExtResource("1_w6an8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.611658, 0)
 
 [node name="Floor" type="CSGMesh3D" parent="."]
