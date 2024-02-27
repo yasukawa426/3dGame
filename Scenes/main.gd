@@ -1,5 +1,7 @@
 extends Node
 
+@onready var current_stage = $SubViewportContainer/SubViewport.get_child(0)
+
 #Esse script contem alguns códigos gerais do mundo, q devem estar presentes em todas as cenas.
 #Por enquanto temos só os shortcuts do modo debug.
 
@@ -36,9 +38,11 @@ func _debug_inputs(event: InputEvent):
 		pass
 
 func _update_test_hud():
-	var stamina: float = $SubViewportContainer/SubViewport/TestStage/Player.current_stamina
-	var sprinting: bool = $SubViewportContainer/SubViewport/TestStage/Player.is_sprinting
-	var colliding_object = $SubViewportContainer/SubViewport/TestStage/Player/CameraPivot/InteractRay.colliding_object
+	var player = current_stage.get_node("Player")
+	
+	var stamina: float = player.current_stamina
+	var sprinting: bool = player.is_sprinting
+	var colliding_object = player.get_node("CameraPivot/InteractRay").colliding_object
 	var colliding_object_string: String = ""
 	
 	if colliding_object != null:
