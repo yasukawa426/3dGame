@@ -1,1 +1,1 @@
-<a href="https://www.freepik.com/free-vector/earth-texture_997013.htm">Earth texture by 0melapics</a> on Freepik
+Maioria dos assets usados de <a href="https://craigsnedeker.itch.io/classic64-asset-library">Classic 64 Aasset Pack</a> em itch.io
