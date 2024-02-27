@@ -9,10 +9,18 @@ const SPRINT_MULTIPLIER: float = 1.5
 const JUMP_VELOCITY:float = 4.5
 #Sensibilidade do mouse
 const SENSITIVITY:float = 1
+#Stamina máxima do jogador
+const MAX_STAMINA:float = 50
+#Intervalo que a stamina diminui ou aumenta
+const STAMINA_CHANGE_INTERVAL = 0.5
 
 
 #Velocidade atual do jogador, alterada em algumas situações.
 var current_speed:float = BASE_SPEED
+#Stamina atual do jogador
+var current_stamina: float = MAX_STAMINA
+#Diz se está correndo ou não
+var is_sprinting: bool = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -61,6 +69,35 @@ func _handle_movement(delta:float):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+		
+	
+	#Caso estiver correndo, altera a velocidade e diminui a stamina
+	#Caso não estiver, aumenta a stamina até a stamina maxima
+	if is_sprinting:
+		#Só corre caso tive stamina
+		if current_stamina > STAMINA_CHANGE_INTERVAL:
+			current_speed = BASE_SPEED * SPRINT_MULTIPLIER
+			current_stamina -= STAMINA_CHANGE_INTERVAL
+		
+		#Caso a stamina acabar, fica negativa para ficar um tempo sem conseguir correr
+		elif  current_stamina == STAMINA_CHANGE_INTERVAL or (current_stamina < STAMINA_CHANGE_INTERVAL and current_stamina > 0):
+			current_stamina = -(MAX_STAMINA/2)
+			current_speed = BASE_SPEED
+		
+		#Caso for <= 0, deixa na velocidade base e recupera stamina
+		elif current_stamina <= 0:
+			current_speed = BASE_SPEED
+			current_stamina += STAMINA_CHANGE_INTERVAL
+	else:
+		#Caso não estiver na stamina base, carrega a stamina
+		if current_stamina < MAX_STAMINA:
+			current_stamina += STAMINA_CHANGE_INTERVAL
+		
+		#Nunca vai ser maior que a stamina maxima
+		elif current_stamina > MAX_STAMINA:
+			current_stamina = MAX_STAMINA
+		
+		current_speed = BASE_SPEED
 	
 	#A direção é baseada pra onde a camera esta olhando
 	var direction = (head.transform.basis * Vector3(_input_dir.x, 0, _input_dir.y)).normalized()
@@ -94,9 +131,11 @@ func _handle_mouse_motion(event: InputEventMouseMotion):
 func _handle_keyboard_input(event: InputEventKey):
 	#Checa se o botão de correr está segurado e então altera a current_speed
 	if Input.is_action_pressed("sprint"):
-		current_speed = BASE_SPEED * SPRINT_MULTIPLIER
-	else:
-		current_speed = BASE_SPEED
+		is_sprinting = true
+		
+	elif Input.is_action_just_released("sprint"):
+		is_sprinting = false
+
 		
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
