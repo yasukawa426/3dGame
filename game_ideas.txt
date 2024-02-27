@@ -29,9 +29,9 @@ Manutenção Assustadora:
 
 	Ordem de denvolvimento:
 		1 - Movimentação:
-			Andar
-			Olhar em volta
-			Corrida com stamina limitada (não precisa ser visível)
+			Andar - feito
+			Olhar em volta - feito
+			Corrida com stamina limitada (não precisa ser visível) - feito
 		
 		2 - Interação:
 			Abrir portas
