@@ -30,9 +30,10 @@ var _input_dir:Vector2
 
 # Assim que pronto, pegamos a cabeça do jogador
 @onready var head = $CameraPivot
-
 # Assim que pronto, pegamos a camera
 @onready var camera = $CameraPivot/Camera3D
+# Assim que pronto, pegamos o raio da visão do jogador
+@onready var ray = $CameraPivot/InteractRay 
 
 #Executado assim que o jogador está pronto
 func _ready():
@@ -122,10 +123,13 @@ func _handle_mouse_motion(event: InputEventMouseMotion):
 	#separamos a rotação para evitar rotar o mundo
 	head.rotate_y(-event.relative.x * SENSITIVITY/100)
 	camera.rotate_x(-event.relative.y * SENSITIVITY/100)
+	ray.rotate_x(-event.relative.y * SENSITIVITY/100)
+	
 		
 	#limitamos quanto o jogador consegue movimentar a camera no eixo x
 	#evitando girar completamente
 	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))	
+	ray.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))	
 
 #Fumção responsável por lidar com o teclado
 func _handle_keyboard_input(event: InputEventKey):

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://csov6h8ondyjb"]
+[gd_scene load_steps=5 format=3 uid="uid://csov6h8ondyjb"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/player.gd" id="1_kn0fw"]
+[ext_resource type="Script" path="res://scenes/entities/player/InteractRay.gd" id="2_gyet6"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_b7iua"]
 
@@ -19,3 +20,7 @@ shape = SubResource("ConvexPolygonShape3D_xfjql")
 [node name="CameraPivot" type="Marker3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+
+[node name="InteractRay" type="RayCast3D" parent="CameraPivot"]
+target_position = Vector3(0, 0, -4)
+script = ExtResource("2_gyet6")
