@@ -2,7 +2,7 @@ extends Node
 
 @onready var current_stage = $SubViewportContainer/SubViewport.get_child(0)
 #Hud para mostrar informações de teste, só vizivel no modo debug
-@onready var test_hud = $SubViewportContainer/TestHUD
+@onready var test_hud = $TestHUD
 
 #Esse script contem alguns códigos gerais do mundo, q devem estar presentes em todas as cenas.
 #Por enquanto temos só os shortcuts do modo debug.

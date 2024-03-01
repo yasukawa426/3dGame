@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnyg1i3lke6fs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2s5g"]
+
+[node name="ScreenShaderContainer" type="BackBufferCopy"]
+visible = false
+position = Vector2(960.5, 540)
+scale = Vector2(9.595, 5.4)
+copy_mode = 2
+
+[node name="Effect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_t2s5g")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
