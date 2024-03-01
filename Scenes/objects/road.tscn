@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dr8aurx3e36ym"]
+
+[ext_resource type="Texture2D" uid="uid://dpdxyx6ea8351" path="res://resources/textures/road_01.png" id="1_acpd5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uu6il"]
+size = Vector3(15, 1, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vddfn"]
+albedo_texture = ExtResource("1_acpd5")
+uv1_scale = Vector3(3, 25, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_856ut"]
+lightmap_size_hint = Vector2i(1079, 1016)
+material = SubResource("StandardMaterial3D_vddfn")
+size = Vector3(15, 1, 200)
+
+[node name="Road" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_uu6il")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_856ut")
