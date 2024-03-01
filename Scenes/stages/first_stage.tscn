@@ -1,24 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfvmqxdo65cmg"]
+[gd_scene load_steps=6 format=3 uid="uid://dfvmqxdo65cmg"]
 
-[ext_resource type="Texture2D" uid="uid://yu50tpxg6xkg" path="res://resources/textures/concrete_floor_02.jpg" id="1_7sx3x"]
+[ext_resource type="Texture2D" uid="uid://dpdxyx6ea8351" path="res://resources/textures/road_01.png" id="1_1lbdv"]
 [ext_resource type="PackedScene" uid="uid://csov6h8ondyjb" path="res://scenes/entities/player/player.tscn" id="2_i1wul"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_dpqpy"]
-size = Vector3(100, 1, 100)
+[sub_resource type="BoxShape3D" id="BoxShape3D_uu6il"]
+size = Vector3(15, 1, 200)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73usi"]
-albedo_texture = ExtResource("1_7sx3x")
-uv1_offset = Vector3(0, 0, -0.56)
-uv1_triplanar = true
-uv2_triplanar_sharpness = 4.14106
-uv2_world_triplanar = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vddfn"]
+albedo_texture = ExtResource("1_1lbdv")
+uv1_scale = Vector3(3, 25, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_856ut"]
+lightmap_size_hint = Vector2i(1079, 1016)
+material = SubResource("StandardMaterial3D_vddfn")
+size = Vector3(15, 1, 200)
 
 [node name="FirstStage" type="Node3D"]
 
-[node name="WorldGround" type="CSGMesh3D" parent="."]
-use_collision = true
-mesh = SubResource("BoxMesh_dpqpy")
-material = SubResource("StandardMaterial3D_73usi")
-
 [node name="Player" parent="." instance=ExtResource("2_i1wul")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73705, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.575, 1.73705, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_uu6il")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_856ut")
