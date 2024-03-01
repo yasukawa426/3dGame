@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cjcc5bnbiicyg"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_2sx10"]
-[ext_resource type="PackedScene" uid="uid://vorto4l6hyqt" path="res://scenes/stages/test_stage.tscn" id="1_kt5wh"]
+[ext_resource type="PackedScene" uid="uid://dfvmqxdo65cmg" path="res://scenes/stages/first_stage.tscn" id="2_m37xs"]
 [ext_resource type="Script" path="res://scenes/ui/TestHUD.gd" id="4_r5dh7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y7wch"]
@@ -13,12 +13,15 @@ ground_horizon_color = Color(0.577451, 0.657936, 0.722466, 1)
 sky_material = SubResource("ProceduralSkyMaterial_y7wch")
 
 [sub_resource type="Environment" id="Environment_5sqcw"]
-background_mode = 2
+background_mode = 1
+background_color = Color(0.0235294, 0.0352941, 0.168627, 1)
 sky = SubResource("Sky_8gmak")
 tonemap_mode = 2
 glow_enabled = true
-fog_light_energy = 13.8
-volumetric_fog_density = 0.7553
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 4.23
+fog_density = 0.385
+volumetric_fog_density = 0.2064
 
 [node name="Main" type="Node"]
 script = ExtResource("1_2sx10")
@@ -40,19 +43,19 @@ grow_vertical = 2
 stretch = true
 stretch_shrink = 3
 
+[node name="TestHUD" type="CanvasLayer" parent="SubViewportContainer"]
+visible = false
+script = ExtResource("4_r5dh7")
+
+[node name="InfoLabel" type="Label" parent="SubViewportContainer/TestHUD"]
+offset_right = 459.0
+offset_bottom = 1082.0
+theme_override_font_sizes/font_size = 38
+text = "Stamina: "
+
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(640, 360)
 render_target_update_mode = 4
 
-[node name="TestStage" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_kt5wh")]
-
-[node name="TestHUD" type="CanvasLayer" parent="."]
-visible = false
-script = ExtResource("4_r5dh7")
-
-[node name="InfoLabel" type="Label" parent="TestHUD"]
-offset_right = 459.0
-offset_bottom = 1082.0
-theme_override_font_sizes/font_size = 38
-text = "Stamina: "
+[node name="FirstStage" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_m37xs")]
