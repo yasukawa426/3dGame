@@ -1,6 +1,8 @@
 extends Node
 
 @onready var current_stage = $SubViewportContainer/SubViewport.get_child(0)
+#Hud para mostrar informações de teste, só vizivel no modo debug
+@onready var test_hud = $SubViewportContainer/TestHUD
 
 #Esse script contem alguns códigos gerais do mundo, q devem estar presentes em todas as cenas.
 #Por enquanto temos só os shortcuts do modo debug.
@@ -10,7 +12,7 @@ func _ready():
 	print_debug("Debug build: " + str(OS.is_debug_build()))
 	
 	if OS.is_debug_build():
-		$TestHUD.show()
+		test_hud.show()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,8 +55,10 @@ func _update_test_hud():
 	
 	var test_string: String = ""
 	
+	test_string += "FPS: " + str(Engine.get_frames_per_second()) + "\n"
 	test_string += "Stamina: " + str(stamina) + "\n"
 	test_string += "Sprinting: " + str(sprinting) + "\n"
 	test_string += "Ray Colliding Object: " + colliding_object_string + "\n"
 	
-	$TestHUD.update_test_info(test_string)
+	
+	test_hud.update_test_info(test_string)
