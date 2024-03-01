@@ -1,30 +1,151 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfvmqxdo65cmg"]
+[gd_scene load_steps=9 format=3 uid="uid://dfvmqxdo65cmg"]
 
-[ext_resource type="Texture2D" uid="uid://dpdxyx6ea8351" path="res://resources/textures/road_01.png" id="1_1lbdv"]
+[ext_resource type="PackedScene" uid="uid://615oe34k16ta" path="res://scenes/objects/buildings.tscn" id="2_gwdn6"]
 [ext_resource type="PackedScene" uid="uid://csov6h8ondyjb" path="res://scenes/entities/player/player.tscn" id="2_i1wul"]
+[ext_resource type="PackedScene" uid="uid://dr8aurx3e36ym" path="res://scenes/objects/road.tscn" id="2_j3tx4"]
+[ext_resource type="PackedScene" uid="uid://ckubpcymv1jsl" path="res://scenes/objects/side_walk.tscn" id="3_v8swi"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_uu6il"]
-size = Vector3(15, 1, 200)
+[sub_resource type="PrismMesh" id="PrismMesh_rde2l"]
+left_to_right = 0.0
+size = Vector3(0.7, 0.2, 200)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vddfn"]
-albedo_texture = ExtResource("1_1lbdv")
-uv1_scale = Vector3(3, 25, 1)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_pbkfb"]
+data = PackedVector3Array(-0.35, 0.1, 100, 0.35, -0.1, 100, -0.35, -0.1, 100, -0.35, 0.1, -100, -0.35, -0.1, -100, 0.35, -0.1, -100, -0.35, 0.1, 100, -0.35, 0.1, -100, 0.35, -0.1, 100, -0.35, 0.1, -100, 0.35, -0.1, -100, 0.35, -0.1, 100, -0.35, 0.1, -100, -0.35, 0.1, 100, -0.35, -0.1, -100, -0.35, 0.1, 100, -0.35, -0.1, 100, -0.35, -0.1, -100, -0.35, -0.1, 100, 0.35, -0.1, 100, -0.35, -0.1, -100, 0.35, -0.1, 100, 0.35, -0.1, -100, -0.35, -0.1, -100)
 
-[sub_resource type="BoxMesh" id="BoxMesh_856ut"]
-lightmap_size_hint = Vector2i(1079, 1016)
-material = SubResource("StandardMaterial3D_vddfn")
-size = Vector3(15, 1, 200)
+[sub_resource type="BoxMesh" id="BoxMesh_hojh3"]
+size = Vector3(1, 8, 200)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_krss3"]
+points = PackedVector3Array(-0.5, -4, -100, 0.5, -4, -100, -0.5, -4, 100, -0.5, 4, -100, 0.5, 4, -100, 0.5, -4, 100, -0.5, 4, 100, 0.5, 4, 100)
 
 [node name="FirstStage" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_i1wul")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.575, 1.73705, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 0, 0)
+[node name="Ground" type="Node3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_uu6il")
+[node name="Road" parent="Ground" instance=ExtResource("2_j3tx4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_856ut")
+[node name="SideWalk" parent="Ground" instance=ExtResource("3_v8swi")]
+
+[node name="SideWalkLedge" type="StaticBody3D" parent="Ground/SideWalk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.09858, -0.17, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground/SideWalk/SideWalkLedge"]
+visible = false
+mesh = SubResource("PrismMesh_rde2l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/SideWalk/SideWalkLedge"]
+shape = SubResource("ConcavePolygonShape3D_pbkfb")
+
+[node name="SideWalk2" parent="Ground" instance=ExtResource("3_v8swi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.979, -0.23, 0)
+
+[node name="SideWalkLedge" type="StaticBody3D" parent="Ground/SideWalk2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -11.859, -0.17, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground/SideWalk2/SideWalkLedge"]
+visible = false
+mesh = SubResource("PrismMesh_rde2l")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/SideWalk2/SideWalkLedge"]
+shape = SubResource("ConcavePolygonShape3D_pbkfb")
+
+[node name="Buildings" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="buildings2" parent="Buildings" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, -12.4147)
+
+[node name="buildings3" parent="Buildings" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, -28.3443)
+
+[node name="buildings4" parent="Buildings" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, -44.2405)
+
+[node name="buildings5" parent="Buildings" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, -59.9353)
+
+[node name="buildings6" parent="Buildings" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, -75.8673)
+
+[node name="buildings7" parent="Buildings" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, -91.7981)
+
+[node name="buildings8" parent="Buildings" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, 19.3021)
+
+[node name="buildings9" parent="Buildings" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, 35.1701)
+
+[node name="buildings10" parent="Buildings" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, 51.0487)
+
+[node name="buildings11" parent="Buildings" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, 66.827)
+
+[node name="buildings12" parent="Buildings" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, 82.3808)
+
+[node name="buildings" parent="Buildings" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, 3.46358)
+
+[node name="CollisionMesh" type="MeshInstance3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9827, 3.65754, 0)
+visible = false
+mesh = SubResource("BoxMesh_hojh3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9827, 3.65754, 0)
+shape = SubResource("ConvexPolygonShape3D_krss3")
+
+[node name="Buildings2" type="StaticBody3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, 0)
+
+[node name="buildings2" parent="Buildings2" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, -12.4147)
+
+[node name="buildings3" parent="Buildings2" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, -28.3443)
+
+[node name="buildings4" parent="Buildings2" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, -44.2405)
+
+[node name="buildings5" parent="Buildings2" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, -59.9353)
+
+[node name="buildings6" parent="Buildings2" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, -75.8673)
+
+[node name="buildings7" parent="Buildings2" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, -91.7981)
+
+[node name="buildings8" parent="Buildings2" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, 19.3021)
+
+[node name="buildings9" parent="Buildings2" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, 35.1701)
+
+[node name="buildings10" parent="Buildings2" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, 51.0487)
+
+[node name="buildings11" parent="Buildings2" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, 66.827)
+
+[node name="buildings12" parent="Buildings2" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, 82.3808)
+
+[node name="buildings" parent="Buildings2" instance=ExtResource("2_gwdn6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.4724, -0.327195, 3.46358)
+
+[node name="CollisionMesh" type="MeshInstance3D" parent="Buildings2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9827, 3.65754, 0)
+visible = false
+mesh = SubResource("BoxMesh_hojh3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9827, 3.65754, 0)
+shape = SubResource("ConvexPolygonShape3D_krss3")
