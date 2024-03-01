@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckubpcymv1jsl"]
+
+[ext_resource type="Texture2D" uid="uid://bk7ykhs062xdy" path="res://resources/textures/sidewalk_lowres.png" id="1_htpon"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g0dqq"]
+albedo_texture = ExtResource("1_htpon")
+uv1_scale = Vector3(0.31, 1, 0.85)
+uv1_offset = Vector3(-0.485, 0, 0)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_f0cvy"]
+material = SubResource("StandardMaterial3D_g0dqq")
+size = Vector3(3, 1, 200)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2dmjr"]
+points = PackedVector3Array(1.5, 0.5, 100, 1.5, -0.5, 100, 1.5, 0.5, -100, -1.5, 0.5, 100, -1.5, -0.5, 100, 1.5, -0.5, -100, -1.5, 0.5, -100, -1.5, -0.5, -100)
+
+[node name="SideWalk" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.978582, -0.23, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0014, -0.573, 0)
+mesh = SubResource("BoxMesh_f0cvy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0014, -0.573, 0)
+shape = SubResource("ConvexPolygonShape3D_2dmjr")
