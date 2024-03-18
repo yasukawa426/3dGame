@@ -8,7 +8,7 @@ const SPRINT_MULTIPLIER: float = 2
 #Velocidade de pulo
 const JUMP_VELOCITY:float = 4.5
 #Sensibilidade do mouse
-const SENSITIVITY:float = 1
+const SENSITIVITY:float = 0.5
 #Stamina máxima do jogador
 const MAX_STAMINA:float = 50
 #Intervalo que a stamina diminui ou aumenta
