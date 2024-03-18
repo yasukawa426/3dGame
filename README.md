@@ -4,4 +4,4 @@
 <a href="https://elegantcrow.itch.io/retro-modular-house-pack">Retro Modular House Pack</a> por Elegant Crow   
 <a href="https://nartier.itch.io/ps1-style-industrial-buildings">Ps1 style industrial buildings</a> por miziziziz  
 <a href="https://ggbot.itch.io/psx-style-cars">PSX Style Cars</a> por GGBotNet  
-<a href="https://github.com/ahopness/GodotRetro">Godot Retro Shaders</a> por ahopness
+<a href="https://kenney.nl/assets/retro-urban-kit">urban kit</a> por kenney  
