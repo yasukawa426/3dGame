@@ -14,14 +14,12 @@ sky_material = SubResource("ProceduralSkyMaterial_y7wch")
 
 [sub_resource type="Environment" id="Environment_5sqcw"]
 background_mode = 1
-background_color = Color(0.0235294, 0.0352941, 0.168627, 1)
 sky = SubResource("Sky_1ix8n")
 tonemap_mode = 2
 glow_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
 fog_light_energy = 4.23
 fog_density = 0.385
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.2107
 
 [node name="Main" type="Node"]
