@@ -13,4 +13,3 @@ func _process(delta):
 #Atualiza a mensagem de stamina
 func update_test_info(string: String):
 	$InfoLabel.text = string
-
